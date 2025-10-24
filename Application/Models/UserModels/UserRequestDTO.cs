@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Models.UserModel
+namespace Application.Models.UserModels
 {
-    public class UserResponseDTO
+    public class UserRequestDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,5 @@ namespace Application.Models.UserModel
         public string Password { get; set; }
         public string Phone { get; set; }
         public int RoleId { get; set; }
-        public string RoleName { get; set; }
-
     }
 }
