@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.UseCase.HashUseCase;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -31,28 +32,38 @@ namespace Infrastructure.Persistence
                       .WithMany(e => e.Users)
                       .HasForeignKey(e => e.RoleId)
                       .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.HasKey(e => e.RoleId);
-                entity.Property(e => e.RoleId).ValueGeneratedOnAdd();
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(20);
-                entity.HasIndex(e => e.Name).IsUnique();
-                entity.HasMany(e => e.Users)
-                      .WithOne(e => e.Role)
-                      .HasForeignKey(e => e.RoleId)
-                      .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasData(
-                    new Role { RoleId = 1, Name = "User" },
-                    new Role { RoleId = 2, Name = "Admin" },
-                    new Role { RoleId = 3, Name = "SuperAdmin" }
-                );
+                    new User
+                    {
+                        Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                        Name = "Álvaro",
+                        LastName = "Ramirez",
+                        Email = "alvaro@gmail.com",
+                        Password = new HashingService().encryptSHA256("123"),
+                        Phone = "1234567890",
+                        RoleId = 3
+                    });
+
+                modelBuilder.Entity<Role>(entity =>
+                {
+                    entity.HasKey(e => e.RoleId);
+                    entity.Property(e => e.RoleId).ValueGeneratedOnAdd();
+                    entity.Property(e => e.Name).IsRequired().HasMaxLength(20);
+                    entity.HasIndex(e => e.Name).IsUnique();
+                    entity.HasMany(e => e.Users)
+                          .WithOne(e => e.Role)
+                          .HasForeignKey(e => e.RoleId)
+                          .OnDelete(DeleteBehavior.Cascade);
+
+                    entity.HasData(
+                        new Role { RoleId = 1, Name = "Current" },
+                        new Role { RoleId = 2, Name = "Admin" },
+                        new Role { RoleId = 3, Name = "SuperAdmin" }
+                    );
+                });
             });
 
-            
         }
-
     }
 }

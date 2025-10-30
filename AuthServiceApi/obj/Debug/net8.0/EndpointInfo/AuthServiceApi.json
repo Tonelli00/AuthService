@@ -14,17 +14,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
+                "$ref": "#/components/schemas/RegisterRequestDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
+                "$ref": "#/components/schemas/RegisterRequestDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
+                "$ref": "#/components/schemas/RegisterRequestDTO"
               }
             }
           }
@@ -96,7 +96,7 @@
         },
         "additionalProperties": false
       },
-      "RegisterDTO": {
+      "RegisterRequestDTO": {
         "type": "object",
         "properties": {
           "name": {

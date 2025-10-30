@@ -1,6 +1,4 @@
-﻿using Application.Models.AuthModels.Register;
-using Application.Models.UserModels;
-using Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Interfaces.UserInterface
 {

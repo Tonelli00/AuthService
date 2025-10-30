@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251029193214_init")]
+    [Migration("20251030231655_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -49,7 +49,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             RoleId = 1,
-                            Name = "User"
+                            Name = "Current"
                         },
                         new
                         {
@@ -105,6 +105,18 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            Email = "alvaro@gmail.com",
+                            LastName = "Ramirez",
+                            Name = "Álvaro",
+                            Password = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                            Phone = "1234567890",
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>

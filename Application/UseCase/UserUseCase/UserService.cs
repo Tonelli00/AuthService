@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.UserInterface;
+﻿using Application.Interfaces.HelperInterface;
+using Application.Interfaces.UserInterface;
 using Application.Models.AuthModels.Login;
 using Application.Models.AuthModels.Register;
 using Application.Models.UserModels;
@@ -16,11 +17,14 @@ namespace Application.UseCase.UserUseCase
         private readonly IUserCommand _userCommand;
         private readonly IUserQuery _userQuery;
         private readonly IConfiguration _configuration;
-        public UserService(IUserCommand userCommand, IUserQuery userQuery, IConfiguration configuration)
+        private readonly IHashingService _hash;
+        public UserService(IUserCommand userCommand, IUserQuery userQuery, IConfiguration configuration,
+            IHashingService hash)
         {
             _userCommand = userCommand;
             _userQuery = userQuery;
             _configuration = configuration;
+            _hash = hash;
         }
         public async Task<UserResponseDTO> DeleteUser(Guid userId)
         {
@@ -77,12 +81,12 @@ namespace Application.UseCase.UserUseCase
             {
                 throw new ArgumentException("Bad Request");
             }
-            User user = await _userQuery.GetByEmail(request.Email);
+            LoginResponseDTO user = await _userQuery.GetByEmail(request.Email);
             if (user == null)
             {
                 throw new ArgumentException("Bad Request");
             }
-            var hashedInput = encriptarSHA256(request.Password);
+            var hashedInput = _hash.encryptSHA256(request.Password);
 
             if (user.Password != hashedInput)
                 throw new ArgumentException("Bad Request");
@@ -91,14 +95,14 @@ namespace Application.UseCase.UserUseCase
             {
                 Id = user.Id,
                 Email = user.Email,
-                RoleName = user.Role.Name
+                RoleName = user.RoleName
             });
 
             return token;
 
         }
 
-        public async Task<UserResponseDTO> RegisterUser(RegisterDTO request)
+        public async Task<RegisterResponseDTO> RegisterUser(RegisterRequestDTO request)
         {
             if (request.Email == null || request.Password == null || request.Name == null || request.Phone == null)
             {
@@ -109,19 +113,15 @@ namespace Application.UseCase.UserUseCase
                 Name = request.Name,
                 LastName = request.LastName,
                 Email = request.Email,
-                Password = encriptarSHA256(request.Password),
+                Password = _hash.encryptSHA256(request.Password),
                 Phone = request.Phone,
                 RoleId = 1
             });
-            return new UserResponseDTO
+            return new RegisterResponseDTO
             {
-                Id = user.Id,
                 Name = user.Name,
                 LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Phone = user.Phone,
-                RoleId = user.RoleId
+                Email = user.Email
             };
         }
 
@@ -134,7 +134,7 @@ namespace Application.UseCase.UserUseCase
                 Name = userDto.Name,
                 LastName = userDto.LastName,
                 Email = userDto.Email,
-                Password = encriptarSHA256(userDto.Password),
+                Password = _hash.encryptSHA256(userDto.Password),
                 Phone = userDto.Phone,
                 RoleId = userDto.RoleId
             });
@@ -150,22 +150,6 @@ namespace Application.UseCase.UserUseCase
             };
         }
 
-        private string encriptarSHA256(string texto)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(texto));
-
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-
-                return builder.ToString();
-            }
-        }
-
         private string GenerateJwtToken(LoginResponseDTO user)
         {
             var userClaims = new[]
@@ -179,10 +163,10 @@ namespace Application.UseCase.UserUseCase
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var jwtConfig = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                claims: userClaims,
-                expires: DateTime.Now.AddMinutes(10),
-                signingCredentials: credentials
+                    issuer: _configuration["Jwt:Issuer"],
+                    claims: userClaims,
+                    expires: DateTime.Now.AddMinutes(10),
+                    signingCredentials: credentials
             );
 
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);

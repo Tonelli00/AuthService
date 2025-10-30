@@ -1,9 +1,7 @@
 ﻿using Application.Interfaces.UserInterface;
 using Application.Models.AuthModels.Login;
 using Application.Models.AuthModels.Register;
-using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthServiceApi.Controllers
@@ -18,15 +16,13 @@ namespace AuthServiceApi.Controllers
             _userService = userService;
         }
         [HttpPost("register")]
-        //[Authorize(Roles = "User")]
-        public async Task<IActionResult> Register([FromBody] RegisterDTO request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDTO request)
         {
             var result = await _userService.RegisterUser(request);
             return new JsonResult(result);
         }
 
         [HttpPost("login")]
-        //[Authorize(Roles = "User")]
         public async Task<IActionResult> Login([FromBody] LoginDTO request)
         {
             var result = await _userService.LoginUser(request);

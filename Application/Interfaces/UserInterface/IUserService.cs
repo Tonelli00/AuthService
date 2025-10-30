@@ -7,7 +7,7 @@ namespace Application.Interfaces.UserInterface
 {
     public interface IUserService
     {
-        Task<UserResponseDTO> RegisterUser(RegisterDTO request);
+        Task<RegisterResponseDTO> RegisterUser(RegisterRequestDTO request);
         Task<string> LoginUser(LoginDTO request);
         Task<List<UserResponseDTO>> GetAllUsers();
         Task<UserResponseDTO> UpdateUser(User userDto);

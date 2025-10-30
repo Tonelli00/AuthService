@@ -8,7 +8,7 @@ namespace Application.Interfaces.UserInterface
     {
         Task<bool> IsEmailUnique(string email);
         Task<User> GetById(Guid userId);
-        Task<User> GetByEmail(string email);
+        Task<LoginResponseDTO> GetByEmail(string email);
         Task<List<User>> GetAllUsers();
     }
 }

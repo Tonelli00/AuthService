@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -54,10 +53,15 @@ namespace Infrastructure.Migrations
                 columns: new[] { "RoleId", "Name" },
                 values: new object[,]
                 {
-                    { 1, "User" },
+                    { 1, "Current" },
                     { 2, "Admin" },
                     { 3, "SuperAdmin" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "LastName", "Name", "Password", "Phone", "RoleId" },
+                values: new object[] { new Guid("11111111-1111-1111-1111-111111111111"), "alvaro@gmail.com", "Ramirez", "Álvaro", "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3", "1234567890", 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_Name",

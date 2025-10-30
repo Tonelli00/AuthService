@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Models.AuthModels.Register
 {
-    public class RegisterDTO
+    public class RegisterRequestDTO
     {
         public string Name { get; set; }
         public string LastName { get; set; }

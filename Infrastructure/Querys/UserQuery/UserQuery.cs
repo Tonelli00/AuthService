@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.UserInterface;
 using Application.Models.AuthModels.Login;
 using Application.Models.UserModels;
+using Application.UseCase.HashUseCase;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -22,12 +23,18 @@ namespace Infrastructure.Querys.UserQuery
             return users;
         }
 
-        public async Task<User> GetByEmail(string email)
+        public async Task<LoginResponseDTO> GetByEmail(string email)
         {
             User user = await _context.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Email == email);
-            return user;
+            return new LoginResponseDTO
+            {
+                Id = user.Id,
+                Email = user.Email,
+                RoleName = user.Role.Name,
+                Password = user.Password
+            };
         }
 
         public async Task<User> GetById(Guid userId)
