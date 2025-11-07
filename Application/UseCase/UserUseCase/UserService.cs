@@ -77,25 +77,46 @@ namespace Application.UseCase.UserUseCase
 
         public async Task<string> LoginUser(LoginDTO request)
         {
-            if (request.Email == null || request.Password == null)
+            var Vmails = new string[] { "@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com" };
+
+            if (string.IsNullOrWhiteSpace(request.Email) || !Vmails.Any(vm=>request.Email.Contains(vm)))
             {
-                throw new ArgumentException("Bad Request");
+                throw new ArgumentException("Ingrese un mail válido");
             }
-            LoginResponseDTO user = await _userQuery.GetByEmail(request.Email);
+
+
+            if (string.IsNullOrWhiteSpace(request.Password))
+            {
+                throw new ArgumentException("Ingrese una contraseña válida");
+            }
+
+            var user = await _userQuery.GetByEmail(request.Email);
+
             if (user == null)
             {
-                throw new ArgumentException("Bad Request");
+                throw new KeyNotFoundException("No se encontró el usuario.");
             }
+            
             var hashedInput = _hash.encryptSHA256(request.Password);
 
             if (user.Password != hashedInput)
-                throw new ArgumentException("Bad Request");
+                throw new ArgumentException("Contraseña Incorrecta.");
 
-            string token = GenerateJwtToken(new LoginResponseDTO
+            var userDto=new LoginResponseDTO
             {
                 Id = user.Id,
                 Email = user.Email,
-                RoleName = user.RoleName
+                RoleName = user.Role.Name,
+                Password = user.Password
+            };
+
+
+
+            string token = GenerateJwtToken(new LoginResponseDTO
+            {
+                Id = userDto.Id,
+                Email = userDto.Email,
+                RoleName = userDto.RoleName
             });
 
             return token;
@@ -104,10 +125,31 @@ namespace Application.UseCase.UserUseCase
 
         public async Task<RegisterResponseDTO> RegisterUser(RegisterRequestDTO request)
         {
-            if (request.Email == null || request.Password == null || request.Name == null || request.Phone == null)
+             var carac = new string[] {"@","_","-","$","#","&","/" };
+            var Vmails = new string[] { "@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com" };
+           
+            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Name) || string.IsNullOrEmpty(request.Phone))
             {
-                throw new ArgumentException("Bad Request");
+                throw new ArgumentException("Complete los campos solicitados...");
             }
+
+            if (!Vmails.Any(Vm=>request.Email.Contains(Vm))) 
+            {
+                throw new ArgumentException("Ingrese un Email válido");
+            }
+            if (request.Password.Length <= 8) 
+            {
+                throw new ArgumentException("Ingrese una contraseña segura (Que contenga más de 8 caracteres)");
+            }
+            if (!carac.Any(c=>request.Password.Contains(c)))
+            {
+                throw new ArgumentException("La contraseña debe contener caracteres especiales. Ejemplo: @, _, -, $, #, &, /)");
+            }
+            if (request.Phone.Length < 10) 
+            {
+                throw new ArgumentException("Ingrese un numero de telefono válido");
+            }
+
             User user = await _userCommand.InsertUser(new User
             {
                 Name = request.Name,

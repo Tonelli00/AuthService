@@ -71,6 +71,9 @@ if (app.Environment.IsDevelopment())
 // CORS
 app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+
+app.UseMiddleware<AuthServiceApi.Middleware.ExceptionMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
