@@ -23,18 +23,12 @@ namespace Infrastructure.Querys.UserQuery
             return users;
         }
 
-        public async Task<LoginResponseDTO> GetByEmail(string email)
+        public async Task<User> GetByEmail(string email)
         {
             User user = await _context.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Email == email);
-            return new LoginResponseDTO
-            {
-                Id = user.Id,
-                Email = user.Email,
-                RoleName = user.Role.Name,
-                Password = user.Password
-            };
+            return user;
         }
 
         public async Task<User> GetById(Guid userId)
