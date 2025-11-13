@@ -19,28 +19,30 @@ namespace Infrastructure.Commands.UserCommand
         {
             _context = context;
         }
-        public async Task<User> DeleteUser(Guid id)
+
+        public async Task<bool> ChangePassword(ChangePasswordRequest request)
         {
-            User user = await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Id == id);
-            _context.Users.Remove(user);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.UserId);
+            if (user == null)
+            {
+                return false;
+            }
+            if (user.Password != request.CurrentPassword)
+            {
+                return false;
+            }
+            user.Password = request.NewPassword;
+            _context.Users.Update(user);
             await _context.SaveChangesAsync();
-            return user;
+            return true;
         }
 
         public async Task<User> InsertUser(User user)
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-           return user;
-        }
-
-        public async Task<User> UpdateUser(User user)
-        {
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
             return user;
         }
+
     }
 }

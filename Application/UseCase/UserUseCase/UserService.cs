@@ -27,60 +27,32 @@ namespace Application.UseCase.UserUseCase
             _configuration = configuration;
             _hash = hash;
         }
-        public async Task<UserResponseDTO> DeleteUser(Guid userId)
-        {
-            await _userCommand.DeleteUser(userId);
-            User user = await _userQuery.GetById(userId);
-            return new UserResponseDTO
-            {
-                Id = user.Id,
-                Name = user.Name,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Phone = user.Phone,
-                RoleId = user.RoleId,
-                RoleName = user.Role.Name
-            };
-        }
 
-        public async Task<List<UserResponseDTO>> GetAllUsers()
+        public async Task<bool> ChangePassword(ChangePasswordRequest request)
         {
-            List<User> users = await _userQuery.GetAllUsers();
-            return users.Select(user => new UserResponseDTO
+            var carac = new string[] { "@", "_", "-", "$", "#", "&", "/", "|", "!", "%", "?", "=", "¡", "¿" };
+            if (request == null) throw new ArgumentNullException("El request no puede ser nulo");
+            if (request.CurrentPassword == request.NewPassword)
+                throw new ArgumentException("La nueva contraseña no puede ser igual a la actual");
+            if (request.NewPassword.Length <= 8)
             {
-                Id = user.Id,
-                Name = user.Name,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Phone = user.Phone,
-                RoleId = user.RoleId,
-                RoleName = user.Role.Name
-            }).ToList();
-        }
-
-        public async Task<UserResponseDTO> GetUser(Guid userId)
-        {
-            User user = await _userQuery.GetById(userId);
-            return new UserResponseDTO
+                throw new ArgumentException("Ingrese una contraseña segura (Que contenga más de 8 caracteres)");
+            }
+            if (!carac.Any(c => request.NewPassword.Contains(c)))
             {
-                Id = user.Id,
-                Name = user.Name,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Phone = user.Phone,
-                RoleId = user.RoleId,
-                RoleName = user.Role.Name
-            };
-        }
+                throw new ArgumentException("La contraseña debe contener caracteres especiales. Ejemplo: @, _, -, $, #, &, /)");
+            }
 
+            request.CurrentPassword = _hash.encryptSHA256(request.CurrentPassword);
+            request.NewPassword = _hash.encryptSHA256(request.NewPassword);
+
+            return await _userCommand.ChangePassword(request);
+        }
         public async Task<string> LoginUser(LoginDTO request)
         {
             var Vmails = new string[] { "@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com" };
 
-            if (string.IsNullOrWhiteSpace(request.Email) || !Vmails.Any(vm=>request.Email.Contains(vm)))
+            if (string.IsNullOrWhiteSpace(request.Email) || !Vmails.Any(vm=>request.Email.Contains(vm)) || request.Email.Any(char.IsUpper))
             {
                 throw new ArgumentException("Ingrese un mail válido");
             }
@@ -126,7 +98,7 @@ namespace Application.UseCase.UserUseCase
 
         public async Task<RegisterResponseDTO> RegisterUser(RegisterRequestDTO request)
         {
-             var carac = new string[] {"@","_","-","$","#","&","/" };
+            var carac = new string[] {"@","_","-","$","#","&","/","|","!", "%", "?", "=","¡","¿" };
             var Vmails = new string[] { "@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com" };
            
             if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Name) || string.IsNullOrEmpty(request.Phone))
@@ -146,7 +118,7 @@ namespace Application.UseCase.UserUseCase
             {
                 throw new ArgumentException("La contraseña debe contener caracteres especiales. Ejemplo: @, _, -, $, #, &, /)");
             }
-            if (request.Phone.Length < 10) 
+            if (request.Phone.Length <= 5 || request.Phone.Length >= 16) 
             {
                 throw new ArgumentException("Ingrese un numero de telefono válido");
             }
@@ -167,32 +139,6 @@ namespace Application.UseCase.UserUseCase
                 Email = user.Email
             };
         }
-
-
-        public async Task<UserResponseDTO> UpdateUser(User userDto)
-        {
-            User user = await _userCommand.UpdateUser(new User
-            {
-                Id = userDto.Id,
-                Name = userDto.Name,
-                LastName = userDto.LastName,
-                Email = userDto.Email,
-                Password = _hash.encryptSHA256(userDto.Password),
-                Phone = userDto.Phone,
-                RoleId = userDto.RoleId
-            });
-            return new UserResponseDTO
-            {
-                Id = user.Id,
-                Name = user.Name,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Phone = user.Phone,
-                RoleId = user.RoleId
-            };
-        }
-
         private string GenerateJwtToken(LoginResponseDTO user)
         {
             var userClaims = new[]
@@ -201,7 +147,7 @@ namespace Application.UseCase.UserUseCase
                 new Claim("userRole", user.RoleName)
             };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var jwtConfig = new JwtSecurityToken(

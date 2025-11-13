@@ -1063,3 +1063,4 @@ D:\AuthService\AuthServiceApi\obj\Debug\net8.0\refint\AuthServiceApi.dll
 D:\AuthService\AuthServiceApi\obj\Debug\net8.0\AuthServiceApi.pdb
 D:\AuthService\AuthServiceApi\obj\Debug\net8.0\AuthServiceApi.genruntimeconfig.cache
 D:\AuthService\AuthServiceApi\obj\Debug\net8.0\ref\AuthServiceApi.dll
+D:\AuthService\AuthServiceApi\obj\Debug\net8.0\swae.build.ex.cache

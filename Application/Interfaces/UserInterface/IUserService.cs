@@ -9,9 +9,6 @@ namespace Application.Interfaces.UserInterface
     {
         Task<RegisterResponseDTO> RegisterUser(RegisterRequestDTO request);
         Task<string> LoginUser(LoginDTO request);
-        Task<List<UserResponseDTO>> GetAllUsers();
-        Task<UserResponseDTO> UpdateUser(User userDto);
-        Task<UserResponseDTO> DeleteUser(Guid userId);
-        Task<UserResponseDTO> GetUser(Guid userId);
+        Task<bool> ChangePassword(ChangePasswordRequest request);
     }
 }
