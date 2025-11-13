@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AuthService\\Application\\Application.csproj": {}
+    "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\AuthService\\Application\\Application.csproj": {
+    "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AuthService\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\AuthService\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\fedea\\.nuget\\packages\\",
-        "outputPath": "D:\\AuthService\\Application\\obj\\",
+        "projectPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\tonel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\fedea\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\tonel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\AuthService\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\AuthService\\Domain\\Domain.csproj"
+              "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\Domain.csproj"
               }
             }
           }
@@ -47,8 +43,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -83,25 +78,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\AuthService\\Domain\\Domain.csproj": {
+    "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AuthService\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\AuthService\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\fedea\\.nuget\\packages\\",
-        "outputPath": "D:\\AuthService\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\tonel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\fedea\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\tonel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -126,8 +117,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -148,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
