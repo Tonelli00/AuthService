@@ -168,7 +168,7 @@ namespace Application.UseCase.UserUseCase
             var jwtConfig = new JwtSecurityToken(
                     issuer: _configuration["Jwt:Issuer"],
                     claims: userClaims,
-                    expires: DateTime.Now.AddMinutes(10),
+                    expires: DateTime.Now.AddMinutes(90),
                     signingCredentials: credentials
             );
 
