@@ -1239,3 +1239,6 @@ C:\Users\tonel\OneDrive\Desktop\AuthService\AuthServiceApi\obj\Debug\net8.0\refi
 C:\Users\tonel\OneDrive\Desktop\AuthService\AuthServiceApi\obj\Debug\net8.0\AuthServiceApi.pdb
 C:\Users\tonel\OneDrive\Desktop\AuthService\AuthServiceApi\obj\Debug\net8.0\AuthServiceApi.genruntimeconfig.cache
 C:\Users\tonel\OneDrive\Desktop\AuthService\AuthServiceApi\obj\Debug\net8.0\ref\AuthServiceApi.dll
+C:\Users\tonel\onedrive\desktop\authservice\authserviceapi\bin\Debug\net8.0\AuthServiceApi.staticwebassets.endpoints.json
+C:\Users\tonel\onedrive\desktop\authservice\authserviceapi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\tonel\onedrive\desktop\authservice\authserviceapi\obj\Debug\net8.0\staticwebassets\msbuild.AuthServiceApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props

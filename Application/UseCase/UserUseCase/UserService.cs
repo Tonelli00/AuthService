@@ -94,6 +94,9 @@ namespace Application.UseCase.UserUseCase
             {
                 Id = user.Id,
                 Email = user.Email,
+                Username=user.Name,
+                UserLastName = user.LastName,
+                UserPhone = user.Phone,
                 RoleName = user.Role.Name,
                 Password = user.Password
             };
@@ -103,6 +106,9 @@ namespace Application.UseCase.UserUseCase
             string token = GenerateJwtToken(new LoginResponseDTO
             {
                 Id = userDto.Id,
+                Username=userDto.Username,
+                UserLastName=userDto.UserLastName,
+                UserPhone=userDto.UserPhone,
                 Email = userDto.Email,
                 RoleName = userDto.RoleName
             });
@@ -159,7 +165,10 @@ namespace Application.UseCase.UserUseCase
             var userClaims = new[]
             {
                 new Claim("userId", user.Id.ToString()),
-                new Claim("userRole", user.RoleName)
+                new Claim("userRole", user.RoleName),
+                new Claim("Username", user.Username),
+                new Claim("UserLastName",user.UserLastName),
+                new Claim("UserPhone",user.UserPhone)
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));

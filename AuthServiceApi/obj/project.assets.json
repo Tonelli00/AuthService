@@ -4913,11 +4913,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\AuthServiceApi\\AuthServiceApi.csproj",
+      "projectUniqueName": "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\authserviceapi\\AuthServiceApi.csproj",
       "projectName": "AuthServiceApi",
-      "projectPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\AuthServiceApi\\AuthServiceApi.csproj",
+      "projectPath": "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\authserviceapi\\AuthServiceApi.csproj",
       "packagesPath": "C:\\Users\\tonel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\AuthServiceApi\\obj\\",
+      "outputPath": "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\authserviceapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tonel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4934,8 +4934,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -4949,7 +4949,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -4981,6 +4982,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.21, 8.0.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.21, 8.0.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.21, 8.0.21]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.21, 8.0.21]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4989,7 +5008,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.111/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

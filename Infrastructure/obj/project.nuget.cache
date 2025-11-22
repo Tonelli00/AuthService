@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6iWZ9v4KYO/8Gd1yxnnLrXm7NmGKa7PEb67++zX5lvUlo42OckYrd5KxjVwRPRD/vdP++gvDGE3bDlJkozHvHA==",
+  "dgSpecHash": "LbuGnSLuOPA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\tonel\\onedrive\\desktop\\authservice\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tonel\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\tonel\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -77,7 +77,10 @@
     "C:\\Users\\tonel\\.nuget\\packages\\system.text.json\\9.0.9\\system.text.json.9.0.9.nupkg.sha512",
     "C:\\Users\\tonel\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\tonel\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\tonel\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\tonel\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\tonel\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.21\\microsoft.netcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\tonel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.21\\microsoft.windowsdesktop.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\tonel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.21\\microsoft.aspnetcore.app.ref.8.0.21.nupkg.sha512"
   ],
   "logs": []
 }
