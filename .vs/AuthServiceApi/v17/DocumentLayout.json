@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\application\\usecase\\userusecase\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|c:\\users\\tonel\\onedrive\\desktop\\authservice\\application\\usecase\\userusecase\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|solutionrelative:application\\usecase\\userusecase\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|c:\\users\\tonel\\onedrive\\desktop\\authservice\\application\\models\\authmodels\\login\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\application\\models\\authmodels\\login\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|solutionrelative:application\\models\\authmodels\\login\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,11 +15,11 @@
       "RelativeMoniker": "D:0:0:{FCDD1423-AE30-407F-B135-0BF05D50BB63}|AuthServiceApi\\AuthServiceApi.csproj|solutionrelative:authserviceapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02D03453-BADC-4F33-B85F-4578570383D9}|Infrastructure\\Infrastructure.csproj|c:\\users\\tonel\\onedrive\\desktop\\authservice\\infrastructure\\querys\\userquery\\userquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02D03453-BADC-4F33-B85F-4578570383D9}|Infrastructure\\Infrastructure.csproj|C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\infrastructure\\querys\\userquery\\userquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02D03453-BADC-4F33-B85F-4578570383D9}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\querys\\userquery\\userquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|c:\\users\\tonel\\onedrive\\desktop\\authservice\\application\\models\\authmodels\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\application\\models\\authmodels\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D24B2F1-2EA0-4DC7-93FC-0CF736B28233}|Application\\Application.csproj|solutionrelative:application\\models\\authmodels\\login\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -46,8 +46,7 @@
               "RelativeToolTip": "Infrastructure\\Querys\\UserQuery\\UserQuery.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAgwCoAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T00:13:10.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-21T00:13:10.124Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Application\\Models\\AuthModels\\Login\\LoginDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T00:08:45.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-21T00:08:45.764Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "Application\\Models\\AuthModels\\Login\\LoginResponseDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T23:47:56.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T23:47:56.135Z"
             },
             {
               "$type": "Document",
@@ -85,8 +82,7 @@
               "RelativeToolTip": "AuthServiceApi\\Controllers\\UserController.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAQwB4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T21:26:30.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T21:26:30.357Z"
             },
             {
               "$type": "Document",
@@ -96,7 +92,7 @@
               "RelativeDocumentMoniker": "Application\\UseCase\\UserUseCase\\UserService.cs",
               "ToolTip": "C:\\Users\\tonel\\OneDrive\\Desktop\\AuthService\\Application\\UseCase\\UserUseCase\\UserService.cs",
               "RelativeToolTip": "Application\\UseCase\\UserUseCase\\UserService.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAiwHMAAAAZAAAA",
+              "ViewState": "AQIAAJsAAAAAAAAAAAAmwKsAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-07T20:37:35.768Z",
               "EditorCaption": ""

@@ -168,7 +168,8 @@ namespace Application.UseCase.UserUseCase
                 new Claim("userRole", user.RoleName),
                 new Claim("Username", user.Username),
                 new Claim("UserLastName",user.UserLastName),
-                new Claim("UserPhone",user.UserPhone)
+                new Claim("UserPhone",user.UserPhone),
+                new Claim("UserEmail",user.Email)
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
