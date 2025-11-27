@@ -1,7 +1,4 @@
 ﻿using Application.Interfaces.Query;
-using Application.Models.AuthModels.Login;
-using Application.Models.UserModels;
-using Application.UseCase.HashUseCase;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -21,23 +18,11 @@ namespace Infrastructure.Querys.UserQuery
             return await _context.Users.AnyAsync(u => u.Id == id);
         }
 
-        public async Task<List<UserResponseDTO>> GetAll()
+        public async Task<List<User>> GetAll()
         {
-            var users = await _context.Users
+            return await _context.Users
                 .Include(u => u.Role)
-                .Select(u => new UserResponseDTO
-                {
-                    Id = u.Id,
-                    Name = u.Name,
-                    LastName = u.LastName,
-                    Email = u.Email,
-                    Password = u.Password,
-                    Phone = u.Phone,
-                    RoleId = u.RoleId,
-                    RoleName = u.Role.Name
-                })
                 .ToListAsync();
-            return users;
         }
 
         public async Task<User> GetByEmail(string email)
@@ -58,7 +43,7 @@ namespace Infrastructure.Querys.UserQuery
 
         public async Task<bool> IsEmailUnique(string email)
         {
-            return await _context.Users.AnyAsync(u => u.Email == email);
+            return !await _context.Users.AnyAsync(u => u.Email == email);
         }
     }
 }

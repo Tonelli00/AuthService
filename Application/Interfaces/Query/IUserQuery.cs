@@ -1,6 +1,4 @@
-﻿using Application.Models.AuthModels.Login;
-using Application.Models.UserModels;
-using Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Interfaces.Query
 {
@@ -10,6 +8,6 @@ namespace Application.Interfaces.Query
         Task<bool> ExistUser(Guid id);
         Task<User> GetById(Guid userId);
         Task<User> GetByEmail(string email);
-        Task<List<UserResponseDTO>> GetAll();
+        Task<List<User>> GetAll();
     }
 }

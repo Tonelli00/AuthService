@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Application.UseCase.HashUseCase
+namespace Application.HashingService
 {
     public class HashingService : IHashingService
     {

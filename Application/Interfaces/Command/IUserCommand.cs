@@ -7,6 +7,6 @@ namespace Application.Interfaces.UserInterface
     {
         Task<User> InsertUser(User user);
         Task<bool> ChangePassword(ChangePasswordRequest request);
-        Task<bool> ChangeUserRole(ChangeUserRoleRequest request);
+        Task<bool> ChangeUserRole(Guid userId, int newRole);
     }
 }

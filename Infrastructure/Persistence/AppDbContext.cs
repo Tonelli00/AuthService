@@ -1,4 +1,4 @@
-﻿using Application.UseCase.HashUseCase;
+﻿using Application.HashingService;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
