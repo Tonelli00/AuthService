@@ -1,8 +1,6 @@
 using Application.Interfaces.HelperInterface;
 using Application.Interfaces.Query;
 using Application.Interfaces.UserInterface;
-using Application.UseCase.HashUseCase;
-using Application.UseCase.UserUseCase;
 using Infrastructure.Commands.UserCommand;
 using Infrastructure.Persistence;
 using Infrastructure.Querys.UserQuery;
@@ -12,6 +10,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using Application.Features.User.Query;
+using Infrastructure.Querys.RoleQuery;
+using Application.HashingService;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,13 +60,14 @@ builder.Services.AddAuthorization(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserCommand, UserCommand>();
 builder.Services.AddScoped<IUserQuery, UserQuery>();
+builder.Services.AddScoped<IRoleQuery, RoleQuery>();
 
 builder.Services.AddScoped<IHashingService, HashingService>();
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("Application")));
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblies(typeof(LoginQuery).Assembly));
 
 var app = builder.Build();
 

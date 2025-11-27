@@ -1,6 +1,4 @@
-﻿
-
-namespace Application.Models.AuthModels.Login
+﻿namespace Application.Models.Response
 {
     public class LoginResponseDTO
     {
